@@ -10,7 +10,7 @@ qlux is a library for KDB-X. It allows developers to write hyperscript inspired 
 // start q with port 5001
 \l qlux.q
 
-my_component: .qlux.h[`div;
+index: .qlux.h[`div;
     .qlux.h[`h1;"Hello world!"];
     .qlux.h[`p;"This is an example of some HTML written with qlux."];
     .qlux.h[`p;
@@ -20,15 +20,22 @@ my_component: .qlux.h[`div;
       ];
       "or anything else you ";
       .qlux.h[`a;enlist[`href]!enlist "code.kx.com";"want!"]
+    ];
+    .qlux.h[`p;
+      "You can make ";
+      .qlux.h[`a;enlist[`href]!enlist "/page2";"links"];
+      " to other pages too."
     ]
   ]
 
+page2: {.qlux.h[`h1;"Like this page!"]}
+
 serve: .qlux.app[
-  .qlux.index[my_component]
+  .qlux.index[index];
+  .qlux.route[`page2;page2]
   ];
 
 .z.ph: serve
-// navigate to localhost:5001 and you're off to the races!
 ```
 
 ## What is qlux for?
