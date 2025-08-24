@@ -10,7 +10,7 @@ qlux is a work-in-progress library for KDB-X. It allows developers to write web 
 // start q with port 5001
 \l qlux.q
 
-index: .qlux.h[`div;
+index: {.qlux.h[`div;
     .qlux.h[`h1;"Hello world!"];
     .qlux.h[`p;"This is an example of some HTML written with qlux."];
     .qlux.h[`p;
@@ -26,7 +26,7 @@ index: .qlux.h[`div;
       .qlux.h[`a;enlist[`href]!enlist "/page2";"links"];
       " to other pages too."
     ]
-  ]
+  ]}
 
 page2: {.qlux.h[`h1;"Like this page!"]}
 
