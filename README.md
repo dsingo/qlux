@@ -19,7 +19,7 @@ index: {.qlux.h[`div;
         "styling"
       ];
       "or anything else you ";
-      .qlux.h[`a;enlist[`href]!enlist "code.kx.com";"want!"]
+      .qlux.h[`a;enlist[`href]!enlist "https://code.kx.com";"want!"]
     ];
     .qlux.h[`p;
       "You can make ";
@@ -61,3 +61,7 @@ Thank you to [Aaron Hsu](https://github.com/arcfide) for changing the way I thin
 `.qlux.route` either takes a function that returns a qlux layout, or subroutes.
 
 `.qlux.app` allows you to define a web application - GET accessible pages at specific routes. If you pass in routes, you'll get back a handler you can pass to `.z.ph`.
+
+## What's the difference between qlux and .htac?
+
+At the minute, not much. I hope to make the renderer smarter so that it can defer loading expensive components and send them to the client after the initial load.
