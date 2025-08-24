@@ -2,7 +2,7 @@
 
 ![qlux Logo](examples/app_with_static/static/logo.jpg)
 
-qlux is a library for KDB-X. It allows developers to write hyperscript inspired HTML trees and render them to a string.
+qlux is a work-in-progress library for KDB-X. It allows developers to write web apps using hyperscript inspired HTML trees.
 
 ## Usage
 
