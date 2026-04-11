@@ -1,5 +1,5 @@
 .qlux.int.default_attributes: (`symbol$())!();
-.qlux.int.tags: `h1`p`div`span`a`img`h2;
+.qlux.int.tags: `h1`p`div`span`a`img`h2`h3`pre`ul`li;
 .qlux.int.elems: `qlux_text,.qlux.int.tags;
 
 .qlux.int.h: {[args]
@@ -11,7 +11,7 @@
   
   // children correctness checking
   children_start: (1;2) 99h=arg_types 1;
-  if[any not (children_start _ arg_types) in 98 10h;'`children]; // raise on incompatible children;
+  if[any not (children_start _ arg_types) in 0 98 10h;'`children]; // raise on incompatible children;
   
   // property correctness checking
   properties: (.qlux.int.default_attributes;args 1) children_start=2;
@@ -27,6 +27,8 @@
     content: .h.xs each children text_elems; 
     attrs: (count text_elems)#enlist .qlux.int.default_attributes
   );
+  list_elems: where 0h = children_start _ arg_types;
+  children[list_elems]: raze each children list_elems;
   children[::;::;`depth]+: 1;
 
   element,raze children
@@ -41,8 +43,6 @@
     .qlux.int.attribute_sanitizers 0;
     .qlux.int.attribute_sanitizers 1])''[vals]),\:\:"\""
   }
-
-()
 
 .qlux.int.produce_simple_start_tags: .qlux.int.tags!"<",/:string[.qlux.int.tags],\:">"
 
