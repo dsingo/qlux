@@ -2,40 +2,53 @@
 
 ![qlux Logo](examples/app_with_static/static/logo.jpg)
 
-qlux is a work-in-progress library for KDB-X. It allows developers to write web apps using hyperscript inspired HTML trees.
+qlux is a KDB-X module that allows you to build web applications. This includes:
+- Writing markup via `h`, which you can render using `render`; and
+- Defining routing with `app`, using `route` to define pages which you want to render. You can nest `route`, and use `index` to serve indexes.
 
 ## Usage
 
+If you want to build an application with qlux, move the `qlux` folder into your modules. You can then use it as follows:
+
 ```q
 // start q with port 5001
-\l qlux.q
+qlux: use `qlux
 
-index: {.qlux.h[`div;
-    .qlux.h[`h1;"Hello world!"];
-    .qlux.h[`p;"This is an example of some HTML written with qlux."];
-    .qlux.h[`p;
+index: {qlux.h[`div;
+    qlux.h[`h1;"Hello world!"];
+    qlux.h[`p;"This is an example of some HTML written with qlux."];
+    qlux.h[`p;
       "You can pass attributes to elements to enable";
-      .qlux.h[`span;enlist[`style]!enlist "color: #ff0000";
+      qlux.h[`span;enlist[`style]!enlist "color: #ff0000";
         "styling"
       ];
       "or anything else you ";
-      .qlux.h[`a;enlist[`href]!enlist "https://code.kx.com";"want!"]
+      qlux.h[`a;enlist[`href]!enlist "https://code.kx.com";"want!"]
     ];
-    .qlux.h[`p;
+    qlux.h[`p;
       "You can make ";
-      .qlux.h[`a;enlist[`href]!enlist "/page2";"links"];
+      qlux.h[`a;enlist[`href]!enlist "/page2";"links"];
       " to other pages too."
     ]
   ]}
 
-page2: {.qlux.h[`h1;"Like this page!"]}
+page2: {qlux.h[`h1;"Like this page!"]}
 
-serve: .qlux.app[
-  .qlux.index[index];
-  .qlux.route[`page2;page2]
+serve: qlux.app[
+  qlux.index[index];
+  qlux.route[`page2;page2]
   ];
 
 .z.ph: serve
+```
+
+## Development
+
+If you want to extend or develop qlux, clone the repository and then add it to your Q path.
+
+```sh
+git clone https://github.com/dsingo/qlux.git
+export QPATH=${QPATH}:repos/qlux
 ```
 
 ## What is qlux for?
@@ -56,11 +69,11 @@ Thank you to [Aaron Hsu](https://github.com/arcfide) for changing the way I thin
 
 ## How do you use qlux?
 
-`.qlux.h` creates a tree for an html element, with the first argument being the tag (one of h1, p, div, span, a, img - this list is limited for now! just need to add a check for components that don't take children), the second (optional) element being dictionary of properties, and the rest being children (other .qflux.h elements).
+`h` creates a tree for an html element, with the first argument being the tag (one of h1, p, div, span, a, img - this list is limited for now! just need to add a check for components that don't take children), the second (optional) element being dictionary of properties, and the rest being children (other .qflux.h elements).
 
-`.qlux.route` either takes a function that returns a qlux layout, or subroutes.
+`route` either takes a function that returns a qlux layout, or subroutes.
 
-`.qlux.app` allows you to define a web application - GET accessible pages at specific routes. If you pass in routes, you'll get back a handler you can pass to `.z.ph`.
+`app` allows you to define a web application - GET accessible pages at specific routes. If you pass in routes, you'll get back a handler you can pass to `.z.ph`.
 
 ## What's the difference between qlux and .htac?
 
