@@ -7,18 +7,18 @@ index: {
     qlux.h[`p;"This is an example of some HTML written with qlux."];
     qlux.h[`p;
       "You can pass attributes to elements to enable ";
-      qlux.h[`span;enlist[`style]!enlist "color: #ff0000";
+      qlux.h[`span;([style:"color: #ff0000"]);
         "styling"
       ];
       " or anything else you ";
-      qlux.h[`a;enlist[`href]!enlist "https://code.kx.com";"want"];
+      qlux.h[`a;([href:"https://code.kx.com"]);"want"];
       enlist "!"
     ];
     qlux.h[`p;
       "You can also create ";
-      qlux.h[`a;enlist[`href]!enlist "/settings/profile";"other"];
+      qlux.h[`a;([href:"/settings/profile"]);"other"];
       enlist " ";
-      qlux.h[`a;enlist[`href]!enlist "/settings/privacy";"pages."]
+      qlux.h[`a;([href:"/settings/privacy"]);"pages."]
       ]
   ]}
 
