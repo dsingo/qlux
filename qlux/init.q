@@ -69,7 +69,7 @@ render: {[tree]
     et: .z.m.int_produce_end_tags node_type from tree where node_type in .z.m.int_tags;
   parent_map: exec first parent by i from tree where i=(max;i) fby parent;
   tree: update html: (st,'content) from tree;
-  tree: update html: (html ,' raze'[tree[`et] @ (parent_map\) each i]) from tree where not i in parent, i=(max;i) fby parent;
+  tree: update html: (html ,' raze'[tree[`et] @ (parent_map\) each i]) from tree where not i in parent;
   exec html: raze html from tree
   };
 
